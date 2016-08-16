@@ -1,4 +1,3 @@
-import "angular-ui-router/release/angular-ui-router";
 import AppController from "./app.controller";
 
 const app = angular
@@ -10,10 +9,8 @@ const app = angular
                 template:  require("./app.html"),
                 controller: AppController,
                 controllerAs: "$ctrl"
-            })
+            });
     })
-    .run(() => {
-
-    });
+;
 
 export default app;

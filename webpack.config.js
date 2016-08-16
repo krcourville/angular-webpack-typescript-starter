@@ -1,13 +1,16 @@
 const {resolve} = require("path");
+const webpack = require("webpack");
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 
 module.exports = env => {
     return {
         entry: {
-            "main": "./src/index.ts"
+            "vendor": "./src/vendor/index.ts",
+            "main": "./src/app/index.ts"
         },
         output: {
-            filename: "bundle.js",
+            filename: "[name].bundle.js",
+            chunkFilename: "[id].bundle.js",
             path: resolve(__dirname, "dist"),
             pathinfo: !env.prod
         },

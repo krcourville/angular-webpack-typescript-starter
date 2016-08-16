@@ -13,3 +13,5 @@
 * import css and sass
 * babel transforms
 * tslint
+* unit tests
+* UI unit tests
