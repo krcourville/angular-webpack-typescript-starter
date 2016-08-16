@@ -7,13 +7,13 @@
 * https://github.com/eggheadio/webpack-angular/tree/finished/intro
 * https://github.com/bestander/webpack-typescript-angular/blob/master/webpack.config.js
 
-## TODO
-* split out vendor files
-* split out html files?
-* import css and sass
-* babel transforms
-* tslint
-* unit tests
-* UI unit tests
-* test with font and image resources
-* test with css library (ng material)
+## Features
+- [x] split out vendor files
+- [ ] split out html files?
+- [ ] import css and sass
+- [ ] babel transforms
+- [ ] tslint
+- [ ] unit tests
+- [ ] UI unit tests
+- [ ] test with font and image resources
+- [ ] test with css library (ng material)
