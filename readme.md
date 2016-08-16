@@ -15,3 +15,5 @@
 * tslint
 * unit tests
 * UI unit tests
+* test with font and image resources
+* test with css library (ng material)
