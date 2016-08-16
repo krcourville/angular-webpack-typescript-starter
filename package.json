@@ -1,0 +1,36 @@
+{
+  "name": "webpack-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "typings": "typings install && typings prune",
+    "test": "test",
+    "validate-webpack:dev": "webpack-validator webpack.config.js --env.dev",
+    "validate-webpack:prod": "webpack-validator webpack.config.js --env.prod",
+    "copy-files": "cpy src/index.html dist",
+    "clean-dist": "rimraf dist",
+    "clean-and-copy": "npm run clean-dist && npm run copy-files",
+    "prebuild": "typings install && npm run validate-webpack:dev && npm run clean-and-copy",
+    "prebuild:prod": "npm run clean-and-copy",
+    "build": "webpack --env.dev",
+    "build:prod": "webpack --env.prod -p",
+    "prestart": "npm run clean-and-copy",
+    "start": "webpack-dev-server --env.dev --content-base dist"
+  },
+  "author": "Ken Courville",
+  "license": "ISC",
+  "devDependencies": {
+    "angular": "^1.5.8",
+    "awesome-typescript-loader": "^1.0.0",
+    "cpy-cli": "^1.0.1",
+    "html-loader": "^0.4.3",
+    "jquery": "^3.1.0",
+    "raw-loader": "^0.5.1",
+    "rimraf": "^2.5.4",
+    "typescript": "^1.8.10",
+    "webpack": "2.1.0-beta.20",
+    "webpack-dev-server": "2.1.0-beta.0",
+    "webpack-validator": "^2.2.7"
+  }
+}
