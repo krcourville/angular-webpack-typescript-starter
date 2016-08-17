@@ -1,8 +1,9 @@
 const {resolve} = require("path");
 const webpack = require("webpack");
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 
-const isAppModule = new RegExp("src/app");
+const isVendorJs = /node_modules.*[tj]s$/;
 
 module.exports = env => {
     return {
@@ -16,15 +17,12 @@ module.exports = env => {
             path: resolve(__dirname, "dist"),
             pathinfo: !env.prod
         },
-        devtool: "source-map",
+        devtool: env.prod ? "source-map" : "cheap-module-eval-source-map",
+        // devtool: "source-map",
         bail: env.prod,
         resolve: {
             extensions: ['', '.ts', '.js', '.json', ".html"],
-            modulesDirectories: ['node_modules'],
-            // alias: {
-            //     moment: "moment/moment"
-            //
-            // }
+            modulesDirectories: ['node_modules']
         },
         module: {
             loaders: [
@@ -44,11 +42,11 @@ module.exports = env => {
             ]
         },
         plugins: [
-            new webpack.optimize.CommonsChunkPlugin({
-                name: "vendor",
+            new CommonsChunkPlugin({
+                name: "vendor-js",
                 filename: "vendor.bundle.js",
                 minChunks: function(module) {
-                    return !isAppModule.test(module.userRequest);
+                    return isVendorJs.test(module.userRequest);
                 }
             }),
             new ForkCheckerPlugin()
