@@ -1,6 +1,6 @@
 import AppController from "./app.controller";
 
-const app = angular
+export default angular
     .module("app", ["ui.router"])
     .config(($stateProvider: ng.ui.IStateProvider, $urlRouterProvider: ng.ui.IUrlRouterService) => {
         $stateProvider
@@ -12,5 +12,3 @@ const app = angular
             });
     })
 ;
-
-export default app;

@@ -2,10 +2,12 @@ const {resolve} = require("path");
 const webpack = require("webpack");
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 
+const isAppModule = new RegExp("src/app");
+
 module.exports = env => {
     return {
         entry: {
-            "vendor": "./src/vendor/index.ts",
+            // "vendor-css": "./src/vendor/styles.ts",
             "main": "./src/app/index.ts"
         },
         output: {
@@ -19,6 +21,10 @@ module.exports = env => {
         resolve: {
             extensions: ['', '.ts', '.js', '.json', ".html"],
             modulesDirectories: ['node_modules'],
+            // alias: {
+            //     moment: "moment/moment"
+            //
+            // }
         },
         module: {
             loaders: [
@@ -30,10 +36,21 @@ module.exports = env => {
                     test: /\.html$/,
                     loader: 'raw',
                     exclude: resolve(__dirname, "/src/index.html")
+                },
+                {
+                    test: /src.*\.js$/,
+                    loaders: ['ng-annotate']
                 }
             ]
         },
         plugins: [
+            new webpack.optimize.CommonsChunkPlugin({
+                name: "vendor",
+                filename: "vendor.bundle.js",
+                minChunks: function(module) {
+                    return !isAppModule.test(module.userRequest);
+                }
+            }),
             new ForkCheckerPlugin()
         ]
     };
