@@ -2,14 +2,27 @@ const {resolve} = require("path");
 const webpack = require("webpack");
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const isVendorJs = /node_modules.*[tj]s$/;
+// const isVendorJs = /node_modules.*[tj]s$/;
+// const isVendorCss = /node_modules.*\.css$/;
 
 module.exports = env => {
     return {
         entry: {
-            // "vendor-css": "./src/vendor/styles.ts",
-            "main": "./src/app/index.ts"
+            "vendor": [
+                "moment",
+                "angular",
+                "angular-animate",
+                "angular-aria",
+                "angular-material",
+                "angular-ui-router",
+                "jquery"
+            ],
+            // "vendor-css": [
+            //     "angular-material/angular-material.css"
+            // ],
+            "main": "./src/app/index.ts",
         },
         output: {
             filename: "[name].bundle.js",
@@ -38,16 +51,30 @@ module.exports = env => {
                 {
                     test: /src.*\.js$/,
                     loaders: ['ng-annotate']
+                },
+                {
+                    test: /\.css$/,
+                    loader: "style-loader!css-loader"
+                },
+                // {
+                //     test: /\.css$/,
+                //     loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+                // },
+                {
+                    test: /\.png$/,
+                    loader: "url-loader"
+                },
+                {
+                    test: /\.jpg$/,
+                    loader: "file-loader"
                 }
             ]
         },
         plugins: [
+            // new ExtractTextPlugin("[name].css"),
+
             new CommonsChunkPlugin({
-                name: "vendor-js",
-                filename: "vendor.bundle.js",
-                minChunks: function(module) {
-                    return isVendorJs.test(module.userRequest);
-                }
+                names: ["vendor"]
             }),
             new ForkCheckerPlugin()
         ]
