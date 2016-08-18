@@ -4,8 +4,14 @@ const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin
 const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-// const isVendorJs = /node_modules.*[tj]s$/;
-// const isVendorCss = /node_modules.*\.css$/;
+const extractVendorCss = new ExtractTextPlugin({
+    filename: "vendor.bundle.css",
+    allChunks: true
+});
+const extractAppCss = new ExtractTextPlugin({
+    filename: "main.bundle.css",
+    allChunks: true
+});
 
 module.exports = env => {
     return {
@@ -19,9 +25,6 @@ module.exports = env => {
                 "angular-ui-router",
                 "jquery"
             ],
-            // "vendor-css": [
-            //     "angular-material/angular-material.css"
-            // ],
             "main": "./src/app/index.ts",
         },
         output: {
@@ -30,8 +33,8 @@ module.exports = env => {
             path: resolve(__dirname, "dist"),
             pathinfo: !env.prod
         },
-        // devtool: env.prod ? "source-map" : "cheap-module-eval-source-map",
-        devtool: "source-map",
+        devtool: env.prod ? "source-map" : "cheap-module-eval-source-map",
+        // devtool: "source-map",
         bail: env.prod,
         resolve: {
             extensions: ['', '.ts', '.js', '.json', ".html"],
@@ -57,8 +60,15 @@ module.exports = env => {
                 //     loader: "style-loader!css-loader"
                 // },
                 {
-                    test: /\.css$/,
-                    loader: ExtractTextPlugin.extract({
+                    test: /node_modules.*css$/,
+                    loader: extractVendorCss.extract({
+                        fallbackLoader: "style-loader",
+                        loader: "css-loader?sourceMap"
+                    })
+                },
+                {
+                    test: /src.*css$/,
+                    loader: extractAppCss.extract({
                         fallbackLoader: "style-loader",
                         loader: "css-loader?sourceMap"
                     })
@@ -74,7 +84,10 @@ module.exports = env => {
             ]
         },
         plugins: [
-            new ExtractTextPlugin("[name].bundle.css"),
+            extractVendorCss,
+            // new ExtractTextPlugin("[name].bundle.css"),
+
+            extractAppCss,
 
             new CommonsChunkPlugin({
                 names: ["vendor"]
