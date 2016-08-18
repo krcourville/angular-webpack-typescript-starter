@@ -16,7 +16,6 @@
     "build": "webpack --env.dev",
     "build:dev": "npm run validate-webpack:dev && webpack --env.dev",
     "build:prod": "webpack --env.prod -p",
-    "prestart": "npm run clean-and-copy",
     "start": "webpack-dev-server --env.dev --content-base src --watch --progress",
     "wds": "webpack-dev-server --help"
   },
@@ -30,7 +29,7 @@
     "awesome-typescript-loader": "^1.0.0",
     "cpy-cli": "^1.0.1",
     "css-loader": "^0.23.1",
-    "extract-text-webpack-plugin": "^1.0.1",
+    "extract-text-webpack-plugin": "^2.0.0-beta.3",
     "file-loader": "^0.9.0",
     "html-loader": "^0.4.3",
     "jquery": "^3.1.0",

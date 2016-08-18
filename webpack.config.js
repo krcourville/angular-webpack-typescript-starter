@@ -30,8 +30,8 @@ module.exports = env => {
             path: resolve(__dirname, "dist"),
             pathinfo: !env.prod
         },
-        devtool: env.prod ? "source-map" : "cheap-module-eval-source-map",
-        // devtool: "source-map",
+        // devtool: env.prod ? "source-map" : "cheap-module-eval-source-map",
+        devtool: "source-map",
         bail: env.prod,
         resolve: {
             extensions: ['', '.ts', '.js', '.json', ".html"],
@@ -52,14 +52,17 @@ module.exports = env => {
                     test: /src.*\.js$/,
                     loaders: ['ng-annotate']
                 },
-                {
-                    test: /\.css$/,
-                    loader: "style-loader!css-loader"
-                },
                 // {
                 //     test: /\.css$/,
-                //     loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+                //     loader: "style-loader!css-loader"
                 // },
+                {
+                    test: /\.css$/,
+                    loader: ExtractTextPlugin.extract({
+                        fallbackLoader: "style-loader",
+                        loader: "css-loader?sourceMap"
+                    })
+                },
                 {
                     test: /\.png$/,
                     loader: "url-loader"
@@ -71,7 +74,7 @@ module.exports = env => {
             ]
         },
         plugins: [
-            // new ExtractTextPlugin("[name].css"),
+            new ExtractTextPlugin("[name].bundle.css"),
 
             new CommonsChunkPlugin({
                 names: ["vendor"]
