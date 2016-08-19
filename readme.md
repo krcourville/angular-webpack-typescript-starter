@@ -12,10 +12,11 @@
 - [x] split out vendor files
 - [x] test with css library (ng material)
 - [x] test with font resources
-- [ ] split out html files?
+- [ ] css HMR?
 - [ ] import css and sass
 - [ ] babel transforms
 - [ ] tslint
 - [ ] unit tests
 - [ ] UI unit tests
+- [ ] fix minification/ng
 
