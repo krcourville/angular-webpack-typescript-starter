@@ -10,7 +10,7 @@
 
 ## Features
 - [x] split out vendor files
-- [ ] test with css library (ng material)
+- [x] test with css library (ng material)
 - [ ] test with font and image resources
 - [ ] split out html files?
 - [ ] import css and sass
