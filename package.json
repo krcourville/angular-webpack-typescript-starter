@@ -38,6 +38,7 @@
     "ng-annotate-loader": "^0.1.1",
     "raw-loader": "^0.5.1",
     "rimraf": "^2.5.4",
+    "roboto-fontface": "^0.6.0",
     "style-loader": "^0.13.1",
     "typescript": "^1.8.10",
     "url-loader": "^0.5.7",
