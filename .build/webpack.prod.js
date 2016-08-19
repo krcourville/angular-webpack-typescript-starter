@@ -1,6 +1,6 @@
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const extractAppCss = new ExtractTextPlugin({
+const extractAppScss = new ExtractTextPlugin({
     filename: "main.bundle.css",
     allChunks: true
 });
@@ -8,14 +8,14 @@ const extractAppCss = new ExtractTextPlugin({
 module.exports = {
     loaders: [
         {
-            test: /src.*css$/,
-            loader: extractAppCss.extract({
+            test: /src.*s?css$/,
+            loader: extractAppScss.extract({
                 fallbackLoader: "style-loader",
-                loader: "css?sourceMap"
+                loader: "css?sourceMap!sass?sourceMap"
             })
         }
     ],
     plugins: [
-        extractAppCss
+        extractAppScss
     ]
 }

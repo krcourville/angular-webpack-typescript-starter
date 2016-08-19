@@ -2,8 +2,8 @@ module.exports = {
     plugins: [],
     loaders: [
         {
-            test: /src.*css$/,
-            loaders: ["style", "css"]
+            test: /src.*s?css$/,
+            loaders: ["style", "css?sourceMap", "sass?sourceMap"]
         }
     ]
 }

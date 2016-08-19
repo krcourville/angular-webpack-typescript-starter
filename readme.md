@@ -12,7 +12,7 @@
 - [x] split out vendor files
 - [x] test with css library (ng material)
 - [x] test with font resources
-- [ ] css HMR?
+- [x] css HMR?
 - [ ] import css and sass
 - [ ] babel transforms
 - [ ] tslint
