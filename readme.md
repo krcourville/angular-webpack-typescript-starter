@@ -13,7 +13,7 @@
 - [x] test with css library (ng material)
 - [x] test with font resources
 - [x] css HMR?
-- [ ] import css and sass
+- [x] import css and sass
 - [ ] babel transforms
 - [ ] tslint
 - [ ] unit tests
