@@ -55,37 +55,36 @@ module.exports = env => {
                     test: /src.*\.js$/,
                     loaders: ['ng-annotate']
                 },
-                // {
-                //     test: /\.css$/,
-                //     loader: "style-loader!css-loader"
-                // },
                 {
                     test: /node_modules.*css$/,
                     loader: extractVendorCss.extract({
                         fallbackLoader: "style-loader",
-                        loader: "css-loader?sourceMap"
+                        loader: "css?sourceMap"
                     })
                 },
                 {
                     test: /src.*css$/,
                     loader: extractAppCss.extract({
                         fallbackLoader: "style-loader",
-                        loader: "css-loader?sourceMap"
+                        loader: "css?sourceMap"
                     })
                 },
                 {
                     test: /\.png$/,
-                    loader: "url-loader"
+                    loader: "url"
                 },
                 {
                     test: /\.jpg$/,
-                    loader: "file-loader"
+                    loader: "file"
+                },
+                {
+                    test: /\.(eot|svg|ttf|woff|woff2)$/,
+                    loader: 'file?name=fonts/[name].[ext]'
                 }
             ]
         },
         plugins: [
             extractVendorCss,
-            // new ExtractTextPlugin("[name].bundle.css"),
 
             extractAppCss,
 

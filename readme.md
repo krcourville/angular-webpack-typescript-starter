@@ -11,7 +11,7 @@
 ## Features
 - [x] split out vendor files
 - [x] test with css library (ng material)
-- [ ] test with font and image resources
+- [x] test with font resources
 - [ ] split out html files?
 - [ ] import css and sass
 - [ ] babel transforms

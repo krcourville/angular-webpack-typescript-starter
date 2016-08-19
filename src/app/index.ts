@@ -1,14 +1,5 @@
-// import "angular";
-// import "angular-animate";
-// import "angular-aria";
-//
-// import "angular-material";
+require('material-design-icons-iconfont/dist/material-design-icons.css');
 require( 'angular-material/angular-material.css');
-//
-// import "angular-ui-router";
-//
-// import "jquery";
-// import "moment";
 
 import app from "./app.module";
 angular.bootstrap(document, [app.name]);
