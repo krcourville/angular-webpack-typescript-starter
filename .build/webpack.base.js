@@ -68,12 +68,8 @@ module.exports = env => {
                     })
                 },
                 {
-                    test: /\.png$/,
-                    loader: "url"
-                },
-                {
-                    test: /\.jpg$/,
-                    loader: "file"
+                    test: /\.jpe?g$|\.gif$|\.png$/,
+                    loader: "file?name=images/[name].[ext]"
                 },
                 {
                     test: /\.(eot|svg|ttf|woff|woff2)$/,
