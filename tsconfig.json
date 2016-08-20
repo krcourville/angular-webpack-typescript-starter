@@ -3,9 +3,16 @@
   "compilerOptions": {
     "target": "es5",
     "sourceMap": true,
-    "allowJs": true
+    "allowJs": true,
+    "allowUnreachableCode": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "pretty": true
   },
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "forkChecker": true
+  }
 }
