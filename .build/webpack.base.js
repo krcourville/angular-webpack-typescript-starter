@@ -48,15 +48,11 @@ module.exports = env => {
             loaders: [
                 {
                     test: /\.ts$/,
-                    loader: "awesome-typescript"
+                    loader: "ng-annotate!awesome-typescript"
                 },
                 {
                     test: /\.html$/,
                     loader: 'raw'
-                },
-                {
-                    test: /src.*\.js$/,
-                    loaders: ['ng-annotate']
                 },
                 {
                     test: /node_modules.*css$/,
