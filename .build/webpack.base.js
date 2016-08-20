@@ -22,6 +22,8 @@ module.exports = env => {
     return {
         entry: {
             "vendor": [
+                "es6-shim",
+                "bluebird",
                 "moment",
                 "angular",
                 "angular-animate",

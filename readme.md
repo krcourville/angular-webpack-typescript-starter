@@ -14,7 +14,6 @@
 - [x] test with font resources
 - [x] css HMR?
 - [x] import css and sass
-- [ ] babel transforms
 - [x] tslint
 - [ ] unit tests
 - [ ] UI unit tests
