@@ -32,6 +32,10 @@ module.exports = env => {
             ],
             "main": "./src/app/index.ts",
         },
+        tslint: {
+            emitErrors: true,
+            formatter: "prose"
+        },
         output: {
             filename: "[name].bundle.js",
             chunkFilename: "[id].bundle.js",
@@ -48,7 +52,7 @@ module.exports = env => {
             loaders: [
                 {
                     test: /\.ts$/,
-                    loader: "ng-annotate!awesome-typescript"
+                    loader: "ng-annotate!awesome-typescript!tslint"
                 },
                 {
                     test: /\.html$/,
