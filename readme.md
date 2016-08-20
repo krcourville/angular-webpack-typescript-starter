@@ -15,8 +15,8 @@
 - [x] css HMR?
 - [x] import css and sass
 - [ ] babel transforms
-- [ ] tslint
+- [x] tslint
 - [ ] unit tests
 - [ ] UI unit tests
-- [ ] fix minification/ng
+- [x] fix minification/ng
 

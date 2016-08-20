@@ -4,8 +4,6 @@ import "roboto-fontface";
 
 import app from "./app.module";
 
-const a = 'abcdde';
-
 angular.bootstrap(document, [app.name], {
     strictDi: true
 });

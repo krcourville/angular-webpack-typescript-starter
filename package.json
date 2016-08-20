@@ -14,7 +14,7 @@
     "build": "webpack --env.dev",
     "build:dev": "npm run validate-webpack:dev && webpack --env.dev",
     "build:prod": "webpack --env.prod -p",
-    "start": "webpack-dev-server --env.dev --content-base src --watch --progress --hot --inline",
+    "start": "webpack-dev-server --env.dev --content-base src --watch --hot --inline",
     "wds": "webpack-dev-server --help"
   },
   "author": "Ken Courville",
