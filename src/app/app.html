@@ -1,17 +1,9 @@
 <md-toolbar>
     <div class="md-toolbar-tools">
-        <span>Hello {{$ctrl.message}}!!</span>
+        <span>{{ ::$ctrl.appname}}</span>
     </div>
 </md-toolbar>
 
-<form action="" class="app-form">
-    <image src="./images/smile.jpeg"></image>
-    <md-input-container>
-        <label for="field">Label</label>
-        <input name="field" id="field" type="text" required>
-    </md-input-container>
-    <md-button class="md-raised">
-        <md-icon>camera</md-icon>
-        <span>Take a Photo</span>
-    </md-button>
-</form>
+<md-content layout-padding>
+    <p>{{ ::$ctrl.message}}</p>
+</md-content>

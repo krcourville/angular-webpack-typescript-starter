@@ -1,7 +1,6 @@
-import * as moment from "moment";
 import "./app.scss";
-import "./images/smile.jpeg";
 
 export default class AppController {
-    public message = "World::  " + moment().format("YYYY-MM-DD HH:SS");
+    public appname = "App 1.0.0";
+    public message = "Hello World!";
 }
